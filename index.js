@@ -55,10 +55,8 @@ const drawChar = (char, currentX, currentY) => {
     ctx.drawImage(charCanvas, currentX, currentY);
 }
 
-const marginLeft = 3,
-    marginRight = 4,
-    marginTop = 4,
-    marginBottom = 7;
+const marginLeft = 3;
+const marginTop = 4;
 
 let lineOverflow = [0,0,0,0];
 let textOverflow = false;
@@ -92,7 +90,7 @@ const drawText = async (text) => {
             // Unsupported character
             if (!charWidth) continue;
 
-            if (currentX + charWidth + 1 > 94) {
+            if (currentX + charWidth + 1 > 93) {
                 setWarningVisibility(1);
                 lineOverflow[k] = 1;
                 break;
