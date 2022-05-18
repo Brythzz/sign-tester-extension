@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 ctx.scale(2, 2);
 
-const concat = (...args) => {
+const concat = args => {
     return Array.prototype.concat(...args);
 }
 
@@ -47,7 +47,7 @@ const drawChar = (char, currentX, currentY) => {
     charCanvas.height = canvas.height;
 
     const { w, d } = chars[char.charCodeAt()];
-    const charData = concat(...d);
+    const charData = concat(d);
 
     let imageData = new ImageData(new Uint8ClampedArray(charData), w);
     charCanvas.getContext('2d').putImageData(imageData, 0, 0);
