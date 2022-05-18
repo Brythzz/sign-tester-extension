@@ -27,7 +27,7 @@ const chars={
 373:{w:5,t:0,d:[t,t,b,t,t,t,b,t,b,t,t,t,t,t,t,b,t,t,t,b,b,t,b,t,b,b,t,b,t,b,t,b,b,b,b]},
 382:{w:5,t:0,d:[b,t,t,t,b,t,b,b,b,t,t,t,t,t,t,b,b,b,b,b,t,t,b,b,t,t,b,t,t,t,b,b,b,b,b]},
 519:{w:5,t:0,d:[t,b,b,b,t,b,t,t,t,b,t,b,b,b,t,b,t,t,t,b,b,b,b,b,b,b,t,t,t,t,t,b,b,b,b]},
-32:{w:4,t:0,d:[t,t,t,t]},
+32:{w:3,t:0,d:[t,t,t]},
 33:{w:1,t:0,d:[b,b,b,b,b,t,b]},
 34:{w:4,t:0,d:[t,b,t,b,t,b,t,b,b,t,b,t]},
 35:{w:5,t:0,d:[t,b,t,b,t,t,b,t,b,t,b,b,b,b,b,t,b,t,b,t,b,b,b,b,b,t,b,t,b,t,t,b,t,b,t]},
