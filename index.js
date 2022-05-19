@@ -90,7 +90,7 @@ const drawText = async (text) => {
             // Unsupported character
             if (!charWidth) continue;
 
-            if (currentX + charWidth + 1 > 93) {
+            if (currentX + charWidth + 1 > 94) {
                 setWarningVisibility(1);
                 lineOverflow[k] = 1;
                 break;
