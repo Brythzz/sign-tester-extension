@@ -122,7 +122,7 @@ const drawText = async text => {
             if (!charWidth) continue;
 
             // Overflow detection
-            if (currentX + charWidth + 1 > 94) {
+            if (currentX + charWidth + 1 > 93) {
                 setWarningVisibility(1);
                 lineOverflow[k] = 1;
                 break;
