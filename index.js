@@ -18,6 +18,7 @@ const importCrowdinString = () => {
 
         browser.tabs.sendMessage(tabs[0].id, null, response => {
             if (response) {
+                const input = document.querySelector('textarea');
                 input.value = response;
                 saveString(response);
                 drawText(response);
