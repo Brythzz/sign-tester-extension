@@ -93,6 +93,9 @@ const drawText = async text => {
     await initCanvas();
     let currentY = marginTop;
 
+    lineOverflow = [0,0,0,0];
+    textOverflow = false;
+
     const lines = text.replaceAll(/\u00a7[0-9a-fklmnor]/g, '').split('\n');
     for (let k in lines) {
         const line = lines[k];
