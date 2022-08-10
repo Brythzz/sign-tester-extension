@@ -153,7 +153,8 @@ const drawText = async text => {
             else {
                 const charData = getUnicodeCharData(charCode);
                 drawUnicodeChar(charData, currentX + offsetX, currentY);
-                currentX += charData.width / 2 + 1;
+                const width = charData.width;
+                currentX += width / 2 + (width % 2 === 0 ? 1 : .5);
             }
         }
 
