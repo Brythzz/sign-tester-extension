@@ -1,9 +1,13 @@
 const beautifyText = async () => {
     const text = document.querySelector('textarea');
     let output = text.value
-        .replaceAll('\n', ' ')
+        .replaceAll(/\n+/g, ' ')
         .trim()
         .split('');
+
+    if (!output.length)
+        return;
+
     let i = 0;
     let lastSeparator = -1;
     let currentX = marginLeft;
@@ -12,9 +16,8 @@ const beautifyText = async () => {
     while (i < output.length) {
         const char = output[i];
 
-        if (char === ' ') {
+        if (char === ' ')
             lastSeparator = i;
-        }
 
         const charCode = char.charCodeAt(0);
         if (charCode > 65536) {
@@ -47,9 +50,8 @@ const beautifyText = async () => {
         i++;
     }
 
-    if (lineCount === 1 || lineCount === 2) {
+    if (lineCount === 1 || lineCount === 2)
         output.splice(0, 0, '\n');
-    }
 
     text.value = output.join('');
     await updateText(text.value);
