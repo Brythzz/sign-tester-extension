@@ -10,4 +10,4 @@ The extension is available [for Chrome](https://chrome.google.com/webstore/detai
 
 ### Screenshots
 
-![extension_banner](https://user-images.githubusercontent.com/62302815/168880907-7a262e18-3174-4024-a12f-c9163dc8ef8f.png)
+![extension_banner](https://user-images.githubusercontent.com/62302815/202875154-676884c8-6bc8-4343-ad5a-21eb7d9a6fb7.png)
