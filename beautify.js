@@ -1,4 +1,4 @@
-async function beautifyText() {
+const beautifyText = async () => {
     const text = document.querySelector('textarea');
     let output = text.value
         .replaceAll('\n', ' ')
@@ -55,7 +55,7 @@ async function beautifyText() {
     await updateText(text.value);
 }
 
-function initBeautifyButton() {
+const initBeautifyButton = () => {
     const button = document.querySelector('#beautify-button');
     button.addEventListener('click', beautifyText);
 }
