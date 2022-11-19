@@ -193,7 +193,7 @@ const loadImages = async () => {
 }
 
 const initImportButton = async () => {
-    const button = document.querySelector('button');
+    const button = document.querySelector('#import-button');
     const tabs = await browser.tabs.query({ active: true, currentWindow: true });
 
     const isOnCrowdin = tabs[0]?.url.includes('crowdin.com');
@@ -204,12 +204,16 @@ const initImportButton = async () => {
         button.disabled = true;
 }
 
+const updateText = async (text) => {
+    if (!text) setWarningVisibility(0);
+
+    saveString(text);
+    drawText(text);
+}
+
 const initTextArea = async input => {
     input.addEventListener('input', () => {
-        if (!input.value) setWarningVisibility(0);
-
-        saveString(input.value);
-        drawText(input.value);
+        updateText(input.value);
     });
 }
 
@@ -225,6 +229,7 @@ const loadText = async input => {
 (async () => {
     const input = document.querySelector('textarea');
     initImportButton();
+    initBeautifyButton();
 
     await Promise.all(
         [loadGlyphs(), loadImages(), loadText(input)]
