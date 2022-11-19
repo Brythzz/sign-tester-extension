@@ -194,7 +194,7 @@ const loadImages = async () => {
 
 const initImportButton = async () => {
     const button = document.querySelector('#import-button');
-    const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
 
     const isOnCrowdin = tabs[0]?.url.includes('crowdin.com');
 
