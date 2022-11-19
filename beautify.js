@@ -1,9 +1,9 @@
 async function beautifyText() {
-    const text = document.querySelector("textarea");
+    const text = document.querySelector('textarea');
     let output = text.value
-        .replaceAll("\n", " ")
+        .replaceAll('\n', ' ')
         .trim()
-        .split("");
+        .split('');
     let i = 0;
     let lastSeparator = -1;
     let currentX = marginLeft;
@@ -12,7 +12,7 @@ async function beautifyText() {
     while (i < output.length) {
         const char = output[i];
 
-        if (char === " ") {
+        if (char === ' ') {
             lastSeparator = i;
         }
 
@@ -31,10 +31,10 @@ async function beautifyText() {
 
         if (currentX + charWidth + 1 > 93) {
             if (lastSeparator === -1) {
-                output.splice(i, 0, "\n");
+                output.splice(i, 0, '\n');
                 i++;
             } else {
-                output[lastSeparator] = "\n";
+                output[lastSeparator] = '\n';
                 i = lastSeparator + 1;
                 lastSeparator = -1;
             }
@@ -48,7 +48,7 @@ async function beautifyText() {
     }
 
     if (lineCount === 1 || lineCount === 2) {
-        output.splice(0, 0, "\n");
+        output.splice(0, 0, '\n');
     }
 
     text.value = output.join('');
@@ -57,5 +57,5 @@ async function beautifyText() {
 
 function initBeautifyButton() {
     const button = document.querySelector('#beautify-button');
-    button.addEventListener("click", beautifyText);
+    button.addEventListener('click', beautifyText);
 }
