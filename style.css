@@ -89,3 +89,7 @@ button:disabled {
     box-shadow: none!important;
     cursor: default;
 }
+
+.options {
+    margin-top: 8px;
+}
