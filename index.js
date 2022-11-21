@@ -229,7 +229,7 @@ const loadText = async input => {
 (async () => {
     const input = document.querySelector('textarea');
     initImportButton();
-    initBeautifyButton();
+    initBeautify();
 
     await Promise.all(
         [loadGlyphs(), loadImages(), loadText(input)]
