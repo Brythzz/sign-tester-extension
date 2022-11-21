@@ -1,9 +1,11 @@
-const beautifyText = async () => {
+const beautifyText = async (forget_formatting) => {
     const text = document.querySelector('textarea');
     const centerVertically = document.querySelector('#center-vertically').checked;
     const newlinesFill = document.querySelector('#newlines-fill').checked;
 
-    let output = text.value.split('');
+    let output = !forget_formatting
+        ? text.value.replaceAll(/\n+$/g, '').split('')
+        : text.value.replaceAll(/\n+/g, ' ').trim().split('');
 
     if (!output.length)
         return;
@@ -57,6 +59,11 @@ const beautifyText = async () => {
         i++;
     }
 
+    if (lineCount > 4 && !forget_formatting) {
+        beautifyText(true);
+        return;
+    }
+
     if (centerVertically && (lineCount === 1 || lineCount === 2)) {
         output.splice(0, 0, '\n');
         lineCount++;
@@ -72,7 +79,7 @@ const beautifyText = async () => {
 
 const initBeautify = async () => {
     const button = document.querySelector('#beautify-button');
-    button.addEventListener('click', beautifyText);
+    button.addEventListener('click', () => beautifyText(false));
 
     const CVInput = document.querySelector('#center-vertically');
     const NFInput = document.querySelector('#newlines-fill');
