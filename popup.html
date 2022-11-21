@@ -15,9 +15,16 @@
     </div>
     <textarea rows="8" placeholder="Enter sign text here"></textarea>
     <div>
-      <div class="separator">Crowdin Actions</div>
+      <div class="separator">Actions</div>
       <button id="import-button">Import string</button>
       <button id="beautify-button">Beautify</button>
+    </div>
+    <div class="options">
+      <input type="checkbox" id="center-vertically" checked>
+      <label for="center-vertically">Center vertically when beautifying</label>
+      <br>
+      <input type="checkbox" id="newlines-fill">
+      <label for="newlines-fill">Add newlines if there are less than 4 lines</label>
     </div>
   </main>
 </body>

@@ -1,9 +1,11 @@
-const beautifyText = async () => {
+const beautifyText = async (forget_formatting) => {
     const text = document.querySelector('textarea');
-    let output = text.value
-        .replaceAll(/\n+/g, ' ')
-        .trim()
-        .split('');
+    const centerVertically = document.querySelector('#center-vertically').checked;
+    const newlinesFill = document.querySelector('#newlines-fill').checked;
+
+    let output = !forget_formatting
+        ? text.value.replaceAll(/\n+$/g, '').split('')
+        : text.value.replaceAll(/\n+/g, ' ').trim().split('');
 
     if (!output.length)
         return;
@@ -18,6 +20,13 @@ const beautifyText = async () => {
 
         if (char === ' ')
             lastSeparator = i;
+        else if (char === '\n') {
+            lineCount++;
+            lastSeparator = -1;
+            i++;
+            currentX = marginLeft;
+            continue;
+        }
 
         const charCode = char.charCodeAt(0);
         if (charCode > 65536) {
@@ -41,7 +50,7 @@ const beautifyText = async () => {
                 i = lastSeparator + 1;
                 lastSeparator = -1;
             }
-            currentX = 0;
+            currentX = marginLeft;
             lineCount++;
             continue;
         }
@@ -50,14 +59,41 @@ const beautifyText = async () => {
         i++;
     }
 
-    if (lineCount === 1 || lineCount === 2)
+    if (lineCount > 4 && !forget_formatting) {
+        beautifyText(true);
+        return;
+    }
+
+    if (centerVertically && (lineCount === 1 || lineCount === 2)) {
         output.splice(0, 0, '\n');
+        lineCount++;
+    }
+
+    if (newlinesFill && lineCount < 4) {
+        output.splice(output.length, 0, '\n'.repeat(4 - lineCount));
+    }
 
     text.value = output.join('');
     await updateText(text.value);
 }
 
-const initBeautifyButton = () => {
+const initBeautify = async () => {
     const button = document.querySelector('#beautify-button');
-    button.addEventListener('click', beautifyText);
+    button.addEventListener('click', () => beautifyText(false));
+
+    const CVInput = document.querySelector('#center-vertically');
+    const NFInput = document.querySelector('#newlines-fill');
+
+    const { centerVertically, newlinesFill } = await browser.storage.local.get(['centerVertically', 'newlinesFill']);
+
+    CVInput.checked = centerVertically === undefined ? true : centerVertically;
+    NFInput.checked = newlinesFill;
+
+    CVInput.addEventListener('change', (n) => {
+        browser.storage.local.set({ centerVertically: n.target.checked });
+    });
+
+    NFInput.addEventListener('change', (n) => {
+        browser.storage.local.set({ newlinesFill: n.target.checked });
+    });
 }
