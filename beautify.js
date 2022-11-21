@@ -84,16 +84,16 @@ const initBeautify = async () => {
     const CVInput = document.querySelector('#center-vertically');
     const NFInput = document.querySelector('#newlines-fill');
 
-    const { centerVertically, newlinesFill } = await browser.storage.local.get(['centerVertically', 'newlinesFill']);
+    const { centerVertically, newlinesFill } = await chrome.storage.local.get(['centerVertically', 'newlinesFill']);
 
     CVInput.checked = centerVertically === undefined ? true : centerVertically;
     NFInput.checked = newlinesFill;
 
     CVInput.addEventListener('change', (n) => {
-        browser.storage.local.set({ centerVertically: n.target.checked });
+        chrome.storage.local.set({ centerVertically: n.target.checked });
     });
 
     NFInput.addEventListener('change', (n) => {
-        browser.storage.local.set({ newlinesFill: n.target.checked });
+        chrome.storage.local.set({ newlinesFill: n.target.checked });
     });
 }
