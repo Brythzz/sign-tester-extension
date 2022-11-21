@@ -24,7 +24,7 @@ const beautifyText = async (forget_formatting) => {
             lineCount++;
             lastSeparator = -1;
             i++;
-            currentX = 0;
+            currentX = marginLeft;
             continue;
         }
 
@@ -50,7 +50,7 @@ const beautifyText = async (forget_formatting) => {
                 i = lastSeparator + 1;
                 lastSeparator = -1;
             }
-            currentX = 0;
+            currentX = marginLeft;
             lineCount++;
             continue;
         }
